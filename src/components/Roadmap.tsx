@@ -82,7 +82,7 @@ export const Roadmap: React.FC = () => {
           </div>
 
           <div style={{ fontSize: '0.78rem', color: 'var(--text-subtle)', maxWidth: '28rem' }}>
-            Note: Prototype build cost represents raw BOM expenditure. Product kit prices (₹9,500 GPS / ₹9,000 Standard) include pre-assembled carrier drop mounts, tested Teensy firmware, and ground receiver hardware.
+            Note: Prototype build cost represents raw BOM expenditure. Product kit prices (₹15,000 GPS / ₹14,000 Standard) include pre-assembled carrier drop mounts, tested Teensy firmware, and ground receiver hardware.
           </div>
         </div>
       </div>

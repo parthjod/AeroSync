@@ -60,8 +60,8 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
               <thead>
                 <tr>
                   <th>Subsystem / Sensor</th>
-                  <th>AeroSync GPS (₹9,500 FLAGSHIP)</th>
-                  <th>AeroSync Standard (₹9,000 CORE)</th>
+                  <th>AeroSync GPS (₹15,000 FLAGSHIP)</th>
+                  <th>AeroSync Standard (₹14,000 CORE)</th>
                 </tr>
               </thead>
               <tbody>

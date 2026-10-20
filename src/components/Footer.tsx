@@ -32,7 +32,7 @@ export const Footer: React.FC = () => {
             <h4 className="footer-heading">Platform Architecture</h4>
             <ul className="footer-links-grid">
               <li><Link to="/" className="footer-link">Executive Overview</Link></li>
-              <li><Link to="/products" className="footer-link">Hardware Kits (₹9.5k/₹9k)</Link></li>
+              <li><Link to="/products" className="footer-link">Hardware Kits (₹15k/₹14k)</Link></li>
               <li><Link to="/workflow" className="footer-link">Telemetry Pipeline</Link></li>
               <li><Link to="/hardware" className="footer-link">Payload &amp; CAD Gallery</Link></li>
               <li><Link to="/specifications" className="footer-link">Technical Specs &amp; Mission</Link></li>

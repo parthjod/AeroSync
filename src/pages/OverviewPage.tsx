@@ -66,7 +66,7 @@ export const OverviewPage: React.FC<OverviewPageProps> = ({ onOpenLightbox }) =>
               </div>
               <h3 style={{ fontSize: '1.05rem', color: '#ffffff' }}>Hardware Variants</h3>
               <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.45 }}>
-                AeroSync GPS (₹9,500) and AeroSync Standard (₹9,000) specifications, features, and sensor pinouts.
+                AeroSync GPS (₹15,000) and AeroSync Standard (₹14,000) specifications, features, and sensor pinouts.
               </p>
             </Link>
 

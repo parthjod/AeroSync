@@ -283,7 +283,7 @@ These are claims from the supplied project reference. Display them only with car
 Create a typed product data model and render both cards through the same `ProductCard` component.
 
 ### Variant A: AeroSync GPS
-- **Price shown in supplied prompt:** ₹9,500
+- **Price shown in supplied prompt:** ₹15,000
 - **Subtitle:** Hybrid CanSat + Launch Vehicle
 - **Badge:** FLAGSHIP
 - **Key highlight:** Full GPS + live map tracking
@@ -300,7 +300,7 @@ Create a typed product data model and render both cards through the same `Produc
 GPS data described in the source: position, altitude, speed, satellite count, and HDOP.
 
 ### Variant B: AeroSync Standard
-- **Price shown in supplied prompt:** ₹9,000
+- **Price shown in supplied prompt:** ₹14,000
 - **Subtitle:** Hybrid CanSat Telemetry System
 - **Badge:** CORE
 - **Key highlight:** Multi-domain sensing without GPS
@@ -583,9 +583,9 @@ Do not present a mitigation as implemented unless it is confirmed in the code/ha
 Show roadmap items as future work, not current capabilities.
 
 ### Economic feasibility
-The supplied presentation says the build cost is under ₹8,000, while the product cards in the existing prompt show prices of ₹9,500 and ₹9,000. Preserve this distinction:
+The supplied presentation says the build cost is under ₹8,000, while the product cards in the existing prompt show prices of ₹15,000 and ₹14,000. Preserve this distinction:
 - `Reported prototype/build-cost target: under ₹8,000` (source-deck claim; validate before publication).
-- `Displayed product prices: ₹9,500 GPS / ₹9,000 Standard` (existing website prompt).
+- `Displayed product prices: ₹15,000 GPS / ₹14,000 Standard` (existing website prompt).
 Do not conflate build cost with sale price or invent profit margins.
 
 ---
@@ -834,7 +834,7 @@ Preserve these references if a research/reference section is included:
 ### Product and content
 - [ ] The site is a React + TypeScript project with multiple maintainable files.
 - [ ] AeroSync, VAYU9, Team ID 0007, and event/track information are present.
-- [ ] Both products are displayed: GPS ₹9,500 and Standard ₹9,000.
+- [ ] Both products are displayed: GPS ₹15,000 and Standard ₹14,000.
 - [ ] GPS variant includes NEO-6M GPS; Standard clearly excludes it.
 - [ ] Hardware details match the supplied prompt/PPT.
 - [ ] Carrier quadcopter and CanSat enclosure are presented as separate but related parts.
