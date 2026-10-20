@@ -36,9 +36,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOrderClick }) => {
           </div>
           <div className="brand-text-col">
             <span className="brand-name">
-              AeroSync <span className="badge badge-blue">VAYU9</span>
+              AeroSync
             </span>
-            <span className="brand-sub">Hybrid CanSat System · Team 0007</span>
+            <span className="brand-sub">Hybrid CanSat System</span>
           </div>
         </Link>
 
@@ -66,9 +66,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOrderClick }) => {
 
         {/* Right CTA & Badges */}
         <div className="nav-badges">
-          <span className="badge badge-amber" title="Event / Track">
-            INCUBEX 2026
-          </span>
           <button
             type="button"
             className="btn btn-primary"
