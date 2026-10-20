@@ -34,7 +34,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
         />
 
         {/* Product Cards Grid */}
-        <div className="products-grid" style={{ marginBottom: '3.5rem' }}>
+        <div className="products-grid">
           {PRODUCTS.map((prod) => (
             <ProductCard
               key={prod.id}

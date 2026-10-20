@@ -6,7 +6,7 @@ import { PROJECT_INFO } from '../data/mission';
 export const Footer: React.FC = () => {
   return (
     <footer className="footer" role="contentinfo">
-      <div className="container">
+      <div className="footer-container">
         <div className="footer-grid">
           {/* Col 1: Brand & Project Identity */}
           <div className="footer-col">

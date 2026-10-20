@@ -3,7 +3,7 @@ import { ImpactGrid } from '../components/ImpactGrid';
 
 export const ImpactPage: React.FC = () => {
   return (
-    <div style={{ paddingTop: '1.5rem', paddingBottom: '3rem' }}>
+    <div className="page-wrapper">
       <ImpactGrid />
     </div>
   );

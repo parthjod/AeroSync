@@ -3,7 +3,7 @@ import { HowItWorks } from '../components/HowItWorks';
 
 export const WorkflowPage: React.FC = () => {
   return (
-    <div style={{ paddingTop: '1.5rem', paddingBottom: '3rem' }}>
+    <div className="page-wrapper">
       <HowItWorks />
     </div>
   );

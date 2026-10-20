@@ -7,7 +7,7 @@ interface HardwarePageProps {
 
 export const HardwarePage: React.FC<HardwarePageProps> = ({ onOpenLightbox }) => {
   return (
-    <div style={{ paddingTop: '1.5rem', paddingBottom: '3rem' }}>
+    <div className="page-wrapper">
       <ProductGallery onOpenLightbox={onOpenLightbox} />
     </div>
   );

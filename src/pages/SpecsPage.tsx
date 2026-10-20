@@ -3,7 +3,7 @@ import { TechnicalSpecs } from '../components/TechnicalSpecs';
 
 export const SpecsPage: React.FC = () => {
   return (
-    <div style={{ paddingTop: '1.5rem', paddingBottom: '3rem' }}>
+    <div className="page-wrapper">
       <TechnicalSpecs />
     </div>
   );
