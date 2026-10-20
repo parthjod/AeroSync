@@ -16,7 +16,7 @@ export const ProblemSolution: React.FC = () => {
       <div className="container">
         <SectionHeading
           id="prob-sol-heading"
-          eyebrow="Slide 02 · System Context"
+          eyebrow="System Context & Engineering Rationale"
           title="Why AeroSync Was Engineered"
           subtitle="Addressing core limitations in conventional student sounding rockets and stationary atmospheric monitoring."
         />

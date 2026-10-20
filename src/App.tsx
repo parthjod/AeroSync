@@ -1,23 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
+
 import { BackgroundVideo } from './components/BackgroundVideo';
 import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { StatStrip } from './components/StatStrip';
-import { ProblemSolution } from './components/ProblemSolution';
-import { SectionHeading } from './components/SectionHeading';
-import { ProductCard } from './components/ProductCard';
-import { HowItWorks } from './components/HowItWorks';
-import { ProductGallery } from './components/ProductGallery';
-import { TechnicalSpecs } from './components/TechnicalSpecs';
-import { MissionTimeline } from './components/MissionTimeline';
-import { ImpactGrid } from './components/ImpactGrid';
-import { Roadmap } from './components/Roadmap';
-import { ResearchReferences } from './components/ResearchReferences';
-import { PurchaseSection } from './components/PurchaseSection';
+import { Footer } from './components/Footer';
+
+import { OverviewPage } from './pages/OverviewPage';
+import { ProductsPage } from './pages/ProductsPage';
+import { WorkflowPage } from './pages/WorkflowPage';
+import { HardwarePage } from './pages/HardwarePage';
+import { SpecsPage } from './pages/SpecsPage';
+import { MissionPage } from './pages/MissionPage';
+import { ImpactPage } from './pages/ImpactPage';
+import { RoadmapPage } from './pages/RoadmapPage';
+import { OrderPage } from './pages/OrderPage';
+
 import { PurchaseModal } from './components/PurchaseModal';
 import { OrderSuccessModal } from './components/OrderSuccessModal';
+import { OrderDispatchNoticeModal } from './components/OrderDispatchNoticeModal';
 import { ImageLightboxModal } from './components/ImageLightboxModal';
-import { Footer } from './components/Footer';
 
 import { PRODUCTS } from './data/products';
 import { GALLERY_ITEMS } from './data/mission';
@@ -28,13 +29,36 @@ export const App: React.FC = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product>(PRODUCTS[0]);
   const [isPurchaseModalOpen, setIsPurchaseModalOpen] = useState(false);
   const [lightboxActiveItemId, setLightboxActiveItemId] = useState<string | null>(null);
+
+  // Order confirmation states
   const [confirmedOrder, setConfirmedOrder] = useState<ConfirmedOrder | null>(null);
+  const [dispatchNoticeOrder, setDispatchNoticeOrder] = useState<ConfirmedOrder | null>(null);
+  const [isDispatchNoticeOpen, setIsDispatchNoticeOpen] = useState(false);
 
-  const handleSelectProduct = (product: Product) => {
-    setSelectedProduct(product);
-  };
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const handleOpenOrder = () => {
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  // Handle hash redirection from old single-page anchors (e.g. #mission -> /mission)
+  useEffect(() => {
+    const rawHash = window.location.hash.replace('#', '').toLowerCase();
+    if (rawHash) {
+      if (rawHash === 'overview') {
+        navigate('/', { replace: true });
+      } else if (
+        ['products', 'workflow', 'hardware', 'specifications', 'specs', 'mission', 'impact', 'roadmap', 'order'].includes(rawHash)
+      ) {
+        const targetPath = rawHash === 'specs' ? '/specifications' : `/${rawHash}`;
+        navigate(targetPath, { replace: true });
+      }
+    }
+  }, [navigate]);
+
+  const handleOpenOrderModal = () => {
     setIsPurchaseModalOpen(true);
   };
 
@@ -58,97 +82,66 @@ export const App: React.FC = () => {
     setConfirmedOrder(null);
   };
 
-  const scrollToProducts = () => {
-    const el = document.getElementById('products');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+  // When "Done & Close" is clicked on the receipt, show the lively dispatch notification popup!
+  const handleDoneAndCloseSuccessModal = () => {
+    if (confirmedOrder) {
+      setDispatchNoticeOrder(confirmedOrder);
+      setConfirmedOrder(null);
+      setIsDispatchNoticeOpen(true);
+    } else {
+      setConfirmedOrder(null);
     }
   };
 
-  const scrollToWorkflow = () => {
-    const el = document.getElementById('workflow');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
+  const handleCloseDispatchNotice = () => {
+    setIsDispatchNoticeOpen(false);
+    setDispatchNoticeOrder(null);
   };
 
   return (
     <div className="app-container">
-      {/* 1. Ambient Background Video with Accessibility Fallback */}
+      {/* 1. Global Ambient Background Video in Loop */}
       <BackgroundVideo />
 
-      {/* 2. Sticky Navbar */}
-      <Navbar onOrderClick={handleOpenOrder} />
+      {/* 2. Upgraded Sticky Navbar with Multi-Page Links */}
+      <Navbar onOrderClick={handleOpenOrderModal} />
 
-      {/* 3. Main Content Landmark */}
+      {/* 3. Main Routed Landmark */}
       <main id="main-content">
-        {/* Hero Section */}
-        <Hero
-          onExploreProducts={scrollToProducts}
-          onExploreWorkflow={scrollToWorkflow}
-          onOpenLightbox={handleOpenLightbox}
-        />
-
-        {/* System Stat & Metric Strip */}
-        <StatStrip />
-
-        {/* Problem vs AeroSync Solution (Slide 2) */}
-        <ProblemSolution />
-
-        {/* Product Variants Section */}
-        <section id="products" className="products-section" aria-labelledby="products-title">
-          <div className="container">
-            <SectionHeading
-              id="products-title"
-              eyebrow="Airborne Hardware Offerings"
-              title="AeroSync Hardware Variants"
-              subtitle="Select between our full-navigation GPS flagship or dedicated atmospheric multi-domain telemetry payload."
-            />
-
-            <div className="products-grid">
-              {PRODUCTS.map((prod) => (
-                <ProductCard
-                  key={prod.id}
-                  product={prod}
-                  isSelected={selectedProduct.id === prod.id}
-                  onSelectProduct={handleSelectProduct}
-                  onOpenLightbox={handleOpenLightbox}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* How It Works & Telemetry Pipeline */}
-        <HowItWorks />
-
-        {/* Hardware Gallery (CanSat & Carrier Drone) */}
-        <ProductGallery onOpenLightbox={handleOpenLightbox} />
-
-        {/* Technical Architecture & Specs */}
-        <TechnicalSpecs />
-
-        {/* Mission Timeline & Simulated Telemetry Charts */}
-        <MissionTimeline />
-
-        {/* Real-World Use Cases & Impact */}
-        <ImpactGrid />
-
-        {/* Risks, Mitigations & Roadmap */}
-        <Roadmap />
-
-        {/* Research References */}
-        <ResearchReferences />
-
-        {/* Purchase & Enquiry Section */}
-        <PurchaseSection
-          selectedProduct={selectedProduct}
-          onSelectProduct={handleSelectProduct}
-          onOrderSuccess={handleOrderSuccess}
-        />
+        <Routes>
+          <Route path="/" element={<OverviewPage onOpenLightbox={handleOpenLightbox} />} />
+          <Route path="/overview" element={<Navigate to="/" replace />} />
+          <Route
+            path="/products"
+            element={
+              <ProductsPage
+                selectedProduct={selectedProduct}
+                onSelectProduct={setSelectedProduct}
+                onOpenLightbox={handleOpenLightbox}
+              />
+            }
+          />
+          <Route path="/workflow" element={<WorkflowPage />} />
+          <Route path="/hardware" element={<HardwarePage onOpenLightbox={handleOpenLightbox} />} />
+          <Route path="/specifications" element={<SpecsPage />} />
+          <Route path="/mission" element={<MissionPage />} />
+          <Route path="/impact" element={<ImpactPage />} />
+          <Route path="/roadmap" element={<RoadmapPage />} />
+          <Route
+            path="/order"
+            element={
+              <OrderPage
+                selectedProduct={selectedProduct}
+                onSelectProduct={setSelectedProduct}
+                onOrderSuccess={handleOrderSuccess}
+              />
+            }
+          />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </main>
 
-      {/* 4. Footer */}
+      {/* 4. Global Footer */}
       <Footer />
 
       {/* 5. Lightbox Modal for Hardware Images */}
@@ -163,15 +156,23 @@ export const App: React.FC = () => {
       <PurchaseModal
         isOpen={isPurchaseModalOpen}
         selectedProduct={selectedProduct}
-        onSelectProduct={handleSelectProduct}
+        onSelectProduct={setSelectedProduct}
         onClose={handleClosePurchaseModal}
         onOrderSuccess={handleOrderSuccess}
       />
 
-      {/* 7. Order Confirmation Modal */}
+      {/* 7. Order Confirmation Receipt Modal */}
       <OrderSuccessModal
         order={confirmedOrder}
         onClose={handleCloseSuccessModal}
+        onDoneAndClose={handleDoneAndCloseSuccessModal}
+      />
+
+      {/* 8. Aerospace Dispatch Confirmation Pop-up (Non-generic, witty confirmation) */}
+      <OrderDispatchNoticeModal
+        order={dispatchNoticeOrder}
+        isOpen={isDispatchNoticeOpen}
+        onClose={handleCloseDispatchNotice}
       />
     </div>
   );

@@ -5,9 +5,10 @@ import { ConfirmedOrder } from '../types/order';
 interface OrderSuccessModalProps {
   order: ConfirmedOrder | null;
   onClose: () => void;
+  onDoneAndClose?: () => void;
 }
 
-export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({ order, onClose }) => {
+export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({ order, onClose, onDoneAndClose }) => {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -149,7 +150,13 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({ order, onC
         <button
           type="button"
           className="btn btn-primary"
-          onClick={onClose}
+          onClick={() => {
+            if (onDoneAndClose) {
+              onDoneAndClose();
+            } else {
+              onClose();
+            }
+          }}
         >
           <span>Done & Close</span>
         </button>

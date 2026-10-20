@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { Radio, Menu, X, Rocket, ChevronRight } from 'lucide-react';
 
 interface NavbarProps {
-  onOrderClick: () => void;
+  onOrderClick?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onOrderClick }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -16,11 +18,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOrderClick }) => {
     setMobileMenuOpen(false);
   };
 
+  const handleCtaClick = () => {
+    if (onOrderClick) {
+      onOrderClick();
+    } else {
+      navigate('/order');
+    }
+  };
+
   return (
     <header className="navbar" role="banner">
       <div className="container navbar-container">
         {/* Brand */}
-        <a href="#overview" className="navbar-brand" aria-label="AeroSync Home">
+        <Link to="/" className="navbar-brand" aria-label="AeroSync Home">
           <div className="brand-icon-box">
             <Radio size={20} />
           </div>
@@ -30,28 +40,50 @@ export const Navbar: React.FC<NavbarProps> = ({ onOrderClick }) => {
             </span>
             <span className="brand-sub">Hybrid CanSat System · Team 0007</span>
           </div>
-        </a>
+        </Link>
 
-        {/* Desktop Nav Links */}
+        {/* Desktop Nav Links (Pages Navigation) */}
         <nav className="navbar-nav" aria-label="Main Navigation">
-          <a href="#overview" className="nav-link">Overview</a>
-          <a href="#products" className="nav-link">Products</a>
-          <a href="#workflow" className="nav-link">Workflow</a>
-          <a href="#hardware" className="nav-link">Hardware</a>
-          <a href="#specs" className="nav-link">Specifications</a>
-          <a href="#mission" className="nav-link">Mission</a>
-          <a href="#impact" className="nav-link">Impact</a>
-          <a href="#roadmap" className="nav-link">Roadmap</a>
+          <NavLink to="/" end className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+            Overview
+          </NavLink>
+          <NavLink to="/products" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+            Products
+          </NavLink>
+          <NavLink to="/workflow" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+            Workflow
+          </NavLink>
+          <NavLink to="/hardware" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+            Hardware
+          </NavLink>
+          <NavLink to="/specifications" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+            Specs
+          </NavLink>
+          <NavLink to="/mission" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+            Mission
+          </NavLink>
+          <NavLink to="/impact" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+            Impact
+          </NavLink>
+          <NavLink to="/roadmap" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+            Roadmap
+          </NavLink>
         </nav>
 
         {/* Right CTA & Badges */}
         <div className="nav-badges">
-          <span className="badge badge-amber" title="Event / Track">INCUBEX 2026</span>
+          <span className="badge badge-amber" title="Event / Track">
+            INCUBEX 2026
+          </span>
           <button
             type="button"
             className="btn btn-primary"
-            style={{ padding: '0.55rem 1.15rem', fontSize: '0.85rem' }}
-            onClick={onOrderClick}
+            style={{
+              padding: '0.55rem 1.15rem',
+              fontSize: '0.85rem',
+              boxShadow: '0 0 15px rgba(59, 130, 246, 0.4)',
+            }}
+            onClick={handleCtaClick}
           >
             <Rocket size={15} />
             <span>Order / Enquire</span>
@@ -75,21 +107,37 @@ export const Navbar: React.FC<NavbarProps> = ({ onOrderClick }) => {
         className={`mobile-drawer ${mobileMenuOpen ? 'open' : ''}`}
         aria-hidden={!mobileMenuOpen}
       >
-        <a href="#overview" className="nav-link" onClick={closeMobileMenu}>Overview</a>
-        <a href="#products" className="nav-link" onClick={closeMobileMenu}>Product Variants</a>
-        <a href="#workflow" className="nav-link" onClick={closeMobileMenu}>Flight Workflow</a>
-        <a href="#hardware" className="nav-link" onClick={closeMobileMenu}>Hardware Gallery</a>
-        <a href="#specs" className="nav-link" onClick={closeMobileMenu}>Technical Specs</a>
-        <a href="#mission" className="nav-link" onClick={closeMobileMenu}>Mission Profile</a>
-        <a href="#impact" className="nav-link" onClick={closeMobileMenu}>Real-World Impact</a>
-        <a href="#roadmap" className="nav-link" onClick={closeMobileMenu}>Risks & Roadmap</a>
+        <NavLink to="/" end className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} onClick={closeMobileMenu}>
+          Overview
+        </NavLink>
+        <NavLink to="/products" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} onClick={closeMobileMenu}>
+          Product Variants
+        </NavLink>
+        <NavLink to="/workflow" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} onClick={closeMobileMenu}>
+          Flight Workflow
+        </NavLink>
+        <NavLink to="/hardware" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} onClick={closeMobileMenu}>
+          Hardware Gallery
+        </NavLink>
+        <NavLink to="/specifications" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} onClick={closeMobileMenu}>
+          Technical Specs
+        </NavLink>
+        <NavLink to="/mission" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} onClick={closeMobileMenu}>
+          Mission Profile
+        </NavLink>
+        <NavLink to="/impact" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} onClick={closeMobileMenu}>
+          Real-World Impact
+        </NavLink>
+        <NavLink to="/roadmap" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} onClick={closeMobileMenu}>
+          Risks & Roadmap
+        </NavLink>
         <div style={{ marginTop: '0.75rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
           <button
             type="button"
             className="btn btn-primary"
             onClick={() => {
               closeMobileMenu();
-              onOrderClick();
+              handleCtaClick();
             }}
           >
             <Rocket size={16} />

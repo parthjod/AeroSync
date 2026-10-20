@@ -24,7 +24,18 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({ onOpenLightbox }
 
             return (
               <div key={item.id} className="gallery-card">
-                {/* Image Container with Zoom Affordance */}
+                {/* Clean Top Bar ABOVE Image to prevent obscuring diagram titles */}
+                <div className="gallery-card-top-bar">
+                  <span className={`badge ${isActual ? 'badge-green' : 'badge-amber'}`}>
+                    {isActual ? <ShieldCheck size={13} /> : <Cpu size={13} />}
+                    <span>{item.badge}</span>
+                  </span>
+                  <span className="badge" style={{ fontSize: '0.68rem', color: 'var(--text-subtle)' }}>
+                    {item.entity === 'cansat' ? 'CanSat Payload' : 'Carrier Platform'}
+                  </span>
+                </div>
+
+                {/* Image Container with Zoom Affordance — completely unobstructed */}
                 <div
                   className="gallery-image-box"
                   onClick={() => onOpenLightbox(item.id)}
@@ -40,15 +51,7 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({ onOpenLightbox }
                     loading="lazy"
                   />
 
-                  {/* Badge */}
-                  <div className="gallery-badge-overlay">
-                    <span className={`badge ${isActual ? 'badge-green' : 'badge-amber'}`}>
-                      {isActual ? <ShieldCheck size={13} /> : <Cpu size={13} />}
-                      <span>{item.badge}</span>
-                    </span>
-                  </div>
-
-                  {/* Zoom Button */}
+                  {/* Zoom Button at bottom corner */}
                   <button
                     type="button"
                     className="gallery-zoom-button"

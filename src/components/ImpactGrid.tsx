@@ -16,7 +16,7 @@ export const ImpactGrid: React.FC = () => {
       <div className="container">
         <SectionHeading
           id="impact-title"
-          eyebrow="Slide 06 · Application Potential"
+          eyebrow="Application Potential & Use Cases"
           title="Real-World Impact & Deployment Use Cases"
           subtitle="Target applications where low-cost, airborne multi-domain telemetry unlocks accessible data collection."
         />

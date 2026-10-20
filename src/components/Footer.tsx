@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Radio, ExternalLink, Video, Compass } from 'lucide-react';
 import { PROJECT_INFO } from '../data/mission';
 
@@ -28,17 +29,19 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Col 2: Navigation Links */}
+          {/* Col 2: Navigation Links (Separate Pages) */}
           <div className="footer-col">
             <h4 className="footer-heading">Platform Architecture</h4>
             <ul className="footer-links-list">
-              <li><a href="#overview" className="footer-link">Mission Overview</a></li>
-              <li><a href="#products" className="footer-link">Hardware Variants (GPS & Standard)</a></li>
-              <li><a href="#workflow" className="footer-link">Telemetry Downlink Pipeline</a></li>
-              <li><a href="#hardware" className="footer-link">Prototype & CAD Gallery</a></li>
-              <li><a href="#specs" className="footer-link">Technical Specs & Pinouts</a></li>
-              <li><a href="#mission" className="footer-link">Simulated Telemetry Curves</a></li>
-              <li><a href="#order" className="footer-link">Hardware Enquiry & Ordering</a></li>
+              <li><Link to="/" className="footer-link">Mission Overview</Link></li>
+              <li><Link to="/products" className="footer-link">Hardware Variants (GPS & Standard)</Link></li>
+              <li><Link to="/workflow" className="footer-link">Telemetry Downlink Pipeline</Link></li>
+              <li><Link to="/hardware" className="footer-link">Prototype & CAD Gallery</Link></li>
+              <li><Link to="/specifications" className="footer-link">Technical Specs & Pinouts</Link></li>
+              <li><Link to="/mission" className="footer-link">Simulated Telemetry Curves</Link></li>
+              <li><Link to="/impact" className="footer-link">Real-World Impact</Link></li>
+              <li><Link to="/roadmap" className="footer-link">Risks & Roadmap</Link></li>
+              <li><Link to="/order" className="footer-link" style={{ color: 'var(--blue-bright)', fontWeight: 600 }}>Hardware Enquiry & Ordering</Link></li>
             </ul>
           </div>
 
@@ -61,18 +64,6 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href={PROJECT_INFO.videoRemoteUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="footer-link"
-                  style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}
-                >
-                  <span>Ambient Video Asset (CDN)</span>
-                  <ExternalLink size={12} />
-                </a>
-              </li>
-              <li>
-                <a
                   href="https://ieeexplore.ieee.org/document/10245113/"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -80,6 +71,18 @@ export const Footer: React.FC = () => {
                   style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}
                 >
                   <span>IEEE CanSat Air Quality Paper</span>
+                  <ExternalLink size={12} />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.sciencedirect.com/science/article/pii/S0273117724001856?via%3Dihub"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-link"
+                  style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}
+                >
+                  <span>Advances in Space Research (2025)</span>
                   <ExternalLink size={12} />
                 </a>
               </li>

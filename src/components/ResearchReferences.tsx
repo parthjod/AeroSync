@@ -9,7 +9,7 @@ export const ResearchReferences: React.FC = () => {
       <div className="container">
         <SectionHeading
           id="references-title"
-          eyebrow="Slide 08 · Academic Foundation"
+          eyebrow="Academic Foundation & Literature"
           title="Research & Literature References"
           subtitle="Foundational pico-satellite literature and published atmospheric sensing benchmarks cited in the project dossier."
         />

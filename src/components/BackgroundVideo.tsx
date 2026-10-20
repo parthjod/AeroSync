@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import posterImg from '../assets/project-poster.jpg';
-import { PROJECT_INFO } from '../data/mission';
 
 export const BackgroundVideo: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -37,8 +36,8 @@ export const BackgroundVideo: React.FC = () => {
         playsInline
         preload="metadata"
       >
+        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260912_104303_0c6d60b2-9353-408e-9449-585108a22fb5.mp4" type="video/mp4" />
         <source src="/project-video.mp4" type="video/mp4" />
-        <source src={PROJECT_INFO.videoRemoteUrl} type="video/mp4" />
       </video>
 
       {/* Fallback image if video fails to render or for reduced motion */}

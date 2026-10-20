@@ -253,7 +253,7 @@ export interface SimulatedDataPoint {
   lux: number;
 }
 
-// Illustrative / Simulated telemetry dataset matching slide 5 description
+// Illustrative / Simulated telemetry dataset matching the CanSat flight profile
 export const SIMULATED_MISSION_DATA: SimulatedDataPoint[] = [
   { time: 0, altitude: 0, temperature: 28.5, pressure: 1013.2, humidity: 58.2, lux: 42000 },
   { time: 10, altitude: 45, temperature: 28.2, pressure: 1008.1, humidity: 58.0, lux: 43500 },

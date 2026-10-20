@@ -40,7 +40,7 @@ export const MissionCharts: React.FC = () => {
             Simulated Mission Telemetry Profiles
           </h3>
           <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
-            Illustrative flight profile matching the curves presented in Slide 05 of the project deck.
+            Illustrative flight profile matching the nominal atmospheric descent curve.
           </p>
         </div>
 
