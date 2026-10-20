@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Rocket, Radio, X, Sparkles, CheckCircle2 } from 'lucide-react';
 import { ConfirmedOrder } from '../types/order';
 
@@ -13,12 +13,23 @@ export const OrderDispatchNoticeModal: React.FC<OrderDispatchNoticeModalProps> =
   isOpen,
   onClose,
 }) => {
+  const [isExiting, setIsExiting] = useState(false);
+
+  const handleSmoothClose = () => {
+    if (isExiting) return;
+    setIsExiting(true);
+    setTimeout(() => {
+      onClose();
+      setIsExiting(false);
+    }, 220);
+  };
+
   useEffect(() => {
     if (!isOpen) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        onClose();
+        handleSmoothClose();
       }
     };
 
@@ -30,20 +41,20 @@ export const OrderDispatchNoticeModal: React.FC<OrderDispatchNoticeModalProps> =
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = originalOverflow;
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, isExiting]);
 
   if (!isOpen || !order) return null;
 
   return (
     <div
-      className="modal-backdrop"
+      className={`modal-backdrop order-modal-backdrop ${isExiting ? 'is-closing' : ''}`}
       role="dialog"
       aria-modal="true"
       aria-labelledby="dispatch-notice-title"
-      onClick={onClose}
+      onClick={handleSmoothClose}
     >
       <div
-        className="modal-dialog"
+        className={`modal-dialog order-modal-dialog ${isExiting ? 'is-closing' : ''}`}
         style={{
           maxWidth: '560px',
           border: '1px solid rgba(96, 165, 250, 0.4)',
@@ -85,7 +96,7 @@ export const OrderDispatchNoticeModal: React.FC<OrderDispatchNoticeModalProps> =
           <button
             type="button"
             className="lightbox-close-btn"
-            onClick={onClose}
+            onClick={handleSmoothClose}
             aria-label="Close dispatch notice"
           >
             <X size={20} />
@@ -135,7 +146,7 @@ export const OrderDispatchNoticeModal: React.FC<OrderDispatchNoticeModalProps> =
         {/* Action Button */}
         <button
           type="button"
-          className="btn btn-primary"
+          className="btn btn-primary order-submit-btn"
           style={{
             width: '100%',
             padding: '0.85rem',
@@ -143,7 +154,8 @@ export const OrderDispatchNoticeModal: React.FC<OrderDispatchNoticeModalProps> =
             background: 'linear-gradient(135deg, #2563eb 0%, #7c3aed 100%)',
             boxShadow: '0 4px 18px rgba(37, 99, 235, 0.4)',
           }}
-          onClick={onClose}
+          onClick={handleSmoothClose}
+          disabled={isExiting}
         >
           <Sparkles size={18} />
           <span>Roger That Ground Control · Standing By 🚀</span>

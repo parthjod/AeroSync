@@ -238,7 +238,7 @@ export const PurchaseSection: React.FC<PurchaseSectionProps> = ({
                 <div style={{ display: 'flex', gap: '0.75rem', flexDirection: 'column' }}>
                   <button
                     type="submit"
-                    className="btn btn-primary"
+                    className="btn btn-primary order-submit-btn"
                     style={{ width: '100%', padding: '0.85rem' }}
                     disabled={isSubmitting}
                   >

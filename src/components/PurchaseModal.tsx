@@ -27,6 +27,7 @@ export const PurchaseModal: React.FC<PurchaseModalProps> = ({
   const [errors, setErrors] = useState<ValidationErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submissionError, setSubmissionError] = useState<string | null>(null);
+  const [isExiting, setIsExiting] = useState(false);
 
   const modalRef = useRef<HTMLDivElement>(null);
   const firstInputRef = useRef<HTMLInputElement>(null);
@@ -41,6 +42,15 @@ export const PurchaseModal: React.FC<PurchaseModalProps> = ({
     }
   };
 
+  const handleSmoothClose = () => {
+    if (isExiting) return;
+    setIsExiting(true);
+    setTimeout(() => {
+      onClose();
+      setIsExiting(false);
+    }, 220);
+  };
+
   useEffect(() => {
     if (!isOpen) return;
 
@@ -51,7 +61,7 @@ export const PurchaseModal: React.FC<PurchaseModalProps> = ({
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        onClose();
+        handleSmoothClose();
       }
     };
 
@@ -63,12 +73,13 @@ export const PurchaseModal: React.FC<PurchaseModalProps> = ({
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = originalOverflow;
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, isExiting]);
 
   if (!isOpen) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting || isExiting) return;
     setSubmissionError(null);
 
     const validation = validateOrderForm(name, phone);
@@ -92,10 +103,14 @@ export const PurchaseModal: React.FC<PurchaseModalProps> = ({
       );
 
       if (response.success && response.order) {
-        onClose();
-        onOrderSuccess(response.order);
-        setName('');
-        setPhone('');
+        setIsExiting(true);
+        setTimeout(() => {
+          onClose();
+          onOrderSuccess(response.order!);
+          setName('');
+          setPhone('');
+          setIsExiting(false);
+        }, 220);
       } else {
         setSubmissionError(response.error || 'Failed to submit order.');
       }
@@ -109,14 +124,14 @@ export const PurchaseModal: React.FC<PurchaseModalProps> = ({
 
   return (
     <div
-      className="modal-backdrop"
+      className={`modal-backdrop order-modal-backdrop ${isExiting ? 'is-closing' : ''}`}
       role="dialog"
       aria-modal="true"
       aria-labelledby="purchase-modal-title"
-      onClick={onClose}
+      onClick={handleSmoothClose}
     >
       <div
-        className="modal-dialog"
+        className={`modal-dialog order-modal-dialog ${isExiting ? 'is-closing' : ''}`}
         ref={modalRef}
         onClick={(e) => e.stopPropagation()}
       >
@@ -133,7 +148,7 @@ export const PurchaseModal: React.FC<PurchaseModalProps> = ({
           <button
             type="button"
             className="lightbox-close-btn"
-            onClick={onClose}
+            onClick={handleSmoothClose}
             aria-label="Close order dialog"
           >
             <X size={20} />
@@ -231,9 +246,9 @@ export const PurchaseModal: React.FC<PurchaseModalProps> = ({
 
           <button
             type="submit"
-            className="btn btn-primary"
+            className="btn btn-primary order-submit-btn"
             style={{ width: '100%' }}
-            disabled={isSubmitting}
+            disabled={isSubmitting || isExiting}
           >
             {isSubmitting ? (
               <>

@@ -10,13 +10,36 @@ interface OrderSuccessModalProps {
 
 export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({ order, onClose, onDoneAndClose }) => {
   const [copied, setCopied] = useState(false);
+  const [isExiting, setIsExiting] = useState(false);
+
+  const handleSmoothClose = () => {
+    if (isExiting) return;
+    setIsExiting(true);
+    setTimeout(() => {
+      onClose();
+      setIsExiting(false);
+    }, 220);
+  };
+
+  const handleSmoothDoneAndClose = () => {
+    if (isExiting) return;
+    setIsExiting(true);
+    setTimeout(() => {
+      if (onDoneAndClose) {
+        onDoneAndClose();
+      } else {
+        onClose();
+      }
+      setIsExiting(false);
+    }, 220);
+  };
 
   useEffect(() => {
     if (!order) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        onClose();
+        handleSmoothClose();
       }
     };
 
@@ -28,7 +51,7 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({ order, onC
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = originalOverflow;
     };
-  }, [order, onClose]);
+  }, [order, isExiting]);
 
   if (!order) return null;
 
@@ -40,14 +63,14 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({ order, onC
 
   return (
     <div
-      className="modal-backdrop"
+      className={`modal-backdrop order-modal-backdrop ${isExiting ? 'is-closing' : ''}`}
       role="dialog"
       aria-modal="true"
       aria-labelledby="success-modal-title"
-      onClick={onClose}
+      onClick={handleSmoothClose}
     >
       <div
-        className="modal-dialog"
+        className={`modal-dialog order-modal-dialog ${isExiting ? 'is-closing' : ''}`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="modal-header">
@@ -70,7 +93,7 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({ order, onC
           <button
             type="button"
             className="lightbox-close-btn"
-            onClick={onClose}
+            onClick={handleSmoothClose}
             aria-label="Close confirmation dialog"
           >
             <X size={20} />
@@ -149,16 +172,11 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({ order, onC
 
         <button
           type="button"
-          className="btn btn-primary"
-          onClick={() => {
-            if (onDoneAndClose) {
-              onDoneAndClose();
-            } else {
-              onClose();
-            }
-          }}
+          className="btn btn-primary order-submit-btn"
+          onClick={handleSmoothDoneAndClose}
+          disabled={isExiting}
         >
-          <span>Done & Close</span>
+          <span>Done &amp; Close</span>
         </button>
       </div>
     </div>

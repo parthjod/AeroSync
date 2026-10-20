@@ -15,7 +15,7 @@ export const OrderPage: React.FC<OrderPageProps> = ({
   onOrderSuccess,
 }) => {
   return (
-    <div style={{ paddingTop: '1.5rem', paddingBottom: '3rem' }}>
+    <div className="order-page-container" style={{ paddingTop: '1.5rem', paddingBottom: '3rem' }}>
       <PurchaseSection
         selectedProduct={selectedProduct}
         onSelectProduct={onSelectProduct}
