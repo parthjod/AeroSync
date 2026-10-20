@@ -1,12 +1,8 @@
 import React from 'react';
-import { Roadmap } from '../components/Roadmap';
-import { ResearchReferences } from '../components/ResearchReferences';
+import { ImpactRoadmapPage } from './ImpactRoadmapPage';
 
 export const RoadmapPage: React.FC = () => {
-  return (
-    <div className="page-wrapper">
-      <Roadmap />
-      <ResearchReferences />
-    </div>
-  );
+  return <ImpactRoadmapPage />;
 };
+
+export default RoadmapPage;

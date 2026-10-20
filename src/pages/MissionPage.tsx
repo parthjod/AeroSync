@@ -1,10 +1,8 @@
 import React from 'react';
-import { MissionTimeline } from '../components/MissionTimeline';
+import { SpecsMissionPage } from './SpecsMissionPage';
 
 export const MissionPage: React.FC = () => {
-  return (
-    <div className="page-wrapper">
-      <MissionTimeline />
-    </div>
-  );
+  return <SpecsMissionPage />;
 };
+
+export default MissionPage;

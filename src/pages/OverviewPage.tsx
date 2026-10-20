@@ -106,7 +106,7 @@ export const OverviewPage: React.FC<OverviewPageProps> = ({ onOpenLightbox }) =>
               </p>
             </Link>
 
-            {/* Technical Specs Card */}
+            {/* Technical Specs & Mission Card */}
             <Link
               to="/specifications"
               className="gallery-card"
@@ -118,15 +118,15 @@ export const OverviewPage: React.FC<OverviewPageProps> = ({ onOpenLightbox }) =>
                 </div>
                 <ArrowRight size={18} color="var(--blue-bright)" />
               </div>
-              <h3 style={{ fontSize: '1.1rem', color: '#ffffff' }}>Technical Specs</h3>
+              <h3 style={{ fontSize: '1.1rem', color: '#ffffff' }}>Specs &amp; Mission Profile</h3>
               <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
-                Avionics ratings (Teensy 4.1, BME280, SHT31, VEML6030, LSM9DS1), RF link parameters, and dimensions.
+                Avionics pinouts (Teensy 4.1, BME280, SHT31, VEML6030, LoRa), 4-phase flight sequence, and live simulated telemetry curves.
               </p>
             </Link>
 
-            {/* Mission Profile Card */}
+            {/* Impact & Roadmap Card */}
             <Link
-              to="/mission"
+              to="/impact"
               className="gallery-card"
               style={{ padding: '1.5rem', textDecoration: 'none', gap: '0.75rem' }}
             >
@@ -136,9 +136,9 @@ export const OverviewPage: React.FC<OverviewPageProps> = ({ onOpenLightbox }) =>
                 </div>
                 <ArrowRight size={18} color="var(--blue-bright)" />
               </div>
-              <h3 style={{ fontSize: '1.1rem', color: '#ffffff' }}>Mission Telemetry</h3>
+              <h3 style={{ fontSize: '1.1rem', color: '#ffffff' }}>Impact &amp; Strategic Roadmap</h3>
               <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
-                Simulated flight curves for barometric altitude and descent temperature profiles with raw data tables.
+                Real-world deployment use cases (agri-tech, microclimate, defense), engineering risk matrix, and development milestones.
               </p>
             </Link>
 

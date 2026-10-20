@@ -9,10 +9,8 @@ import { OverviewPage } from './pages/OverviewPage';
 import { ProductsPage } from './pages/ProductsPage';
 import { WorkflowPage } from './pages/WorkflowPage';
 import { HardwarePage } from './pages/HardwarePage';
-import { SpecsPage } from './pages/SpecsPage';
-import { MissionPage } from './pages/MissionPage';
-import { ImpactPage } from './pages/ImpactPage';
-import { RoadmapPage } from './pages/RoadmapPage';
+import { SpecsMissionPage } from './pages/SpecsMissionPage';
+import { ImpactRoadmapPage } from './pages/ImpactRoadmapPage';
 import { OrderPage } from './pages/OrderPage';
 
 import { PurchaseModal } from './components/PurchaseModal';
@@ -43,17 +41,18 @@ export const App: React.FC = () => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
-  // Handle hash redirection from old single-page anchors (e.g. #mission -> /mission)
+  // Handle hash redirection from old single-page anchors (e.g. #mission -> /specifications)
   useEffect(() => {
     const rawHash = window.location.hash.replace('#', '').toLowerCase();
     if (rawHash) {
       if (rawHash === 'overview') {
         navigate('/', { replace: true });
-      } else if (
-        ['products', 'workflow', 'hardware', 'specifications', 'specs', 'mission', 'impact', 'roadmap', 'order'].includes(rawHash)
-      ) {
-        const targetPath = rawHash === 'specs' ? '/specifications' : `/${rawHash}`;
-        navigate(targetPath, { replace: true });
+      } else if (['specs', 'mission', 'specifications'].includes(rawHash)) {
+        navigate('/specifications', { replace: true });
+      } else if (['impact', 'roadmap'].includes(rawHash)) {
+        navigate('/impact', { replace: true });
+      } else if (['products', 'workflow', 'hardware', 'order'].includes(rawHash)) {
+        navigate(`/${rawHash}`, { replace: true });
       }
     }
   }, [navigate]);
@@ -123,10 +122,11 @@ export const App: React.FC = () => {
           />
           <Route path="/workflow" element={<WorkflowPage />} />
           <Route path="/hardware" element={<HardwarePage onOpenLightbox={handleOpenLightbox} />} />
-          <Route path="/specifications" element={<SpecsPage />} />
-          <Route path="/mission" element={<MissionPage />} />
-          <Route path="/impact" element={<ImpactPage />} />
-          <Route path="/roadmap" element={<RoadmapPage />} />
+          <Route path="/specifications" element={<SpecsMissionPage />} />
+          <Route path="/specs" element={<Navigate to="/specifications" replace />} />
+          <Route path="/mission" element={<Navigate to="/specifications" replace />} />
+          <Route path="/impact" element={<ImpactRoadmapPage />} />
+          <Route path="/roadmap" element={<Navigate to="/impact" replace />} />
           <Route
             path="/order"
             element={

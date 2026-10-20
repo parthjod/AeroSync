@@ -1,10 +1,8 @@
 import React from 'react';
-import { ImpactGrid } from '../components/ImpactGrid';
+import { ImpactRoadmapPage } from './ImpactRoadmapPage';
 
 export const ImpactPage: React.FC = () => {
-  return (
-    <div className="page-wrapper">
-      <ImpactGrid />
-    </div>
-  );
+  return <ImpactRoadmapPage />;
 };
+
+export default ImpactPage;

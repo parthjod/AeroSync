@@ -33,15 +33,13 @@ export const Footer: React.FC = () => {
           <div className="footer-col">
             <h4 className="footer-heading">Platform Architecture</h4>
             <ul className="footer-links-list">
-              <li><Link to="/" className="footer-link">Mission Overview</Link></li>
-              <li><Link to="/products" className="footer-link">Hardware Variants (GPS & Standard)</Link></li>
+              <li><Link to="/" className="footer-link">Executive Overview</Link></li>
+              <li><Link to="/products" className="footer-link">Hardware Kits (GPS &amp; Standard)</Link></li>
               <li><Link to="/workflow" className="footer-link">Telemetry Downlink Pipeline</Link></li>
-              <li><Link to="/hardware" className="footer-link">Prototype & CAD Gallery</Link></li>
-              <li><Link to="/specifications" className="footer-link">Technical Specs & Pinouts</Link></li>
-              <li><Link to="/mission" className="footer-link">Simulated Telemetry Curves</Link></li>
-              <li><Link to="/impact" className="footer-link">Real-World Impact</Link></li>
-              <li><Link to="/roadmap" className="footer-link">Risks & Roadmap</Link></li>
-              <li><Link to="/order" className="footer-link" style={{ color: 'var(--blue-bright)', fontWeight: 600 }}>Hardware Enquiry & Ordering</Link></li>
+              <li><Link to="/hardware" className="footer-link">Hardware &amp; Carrier Gallery</Link></li>
+              <li><Link to="/specifications" className="footer-link">Technical Specs &amp; Mission Profile</Link></li>
+              <li><Link to="/impact" className="footer-link">Market Impact &amp; Strategic Roadmap</Link></li>
+              <li><Link to="/order" className="footer-link" style={{ color: 'var(--blue-bright)', fontWeight: 600 }}>Hardware Allocation &amp; Ordering</Link></li>
             </ul>
           </div>
 

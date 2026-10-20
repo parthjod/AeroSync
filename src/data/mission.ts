@@ -209,7 +209,7 @@ export const TECHNICAL_SPECS_TABLES = {
     { parameter: 'Nominal Packet Rate', value: '~2.0 seconds telemetry cycle' },
     { parameter: 'Packet Delivery Target', value: '>95% line-of-sight packet reception rate' },
     { parameter: 'Synchronized Parameters', value: '9 sensor channels logged simultaneously' },
-    { parameter: 'Target Build Cost', value: 'Under ₹8,000 (Reported prototype target from presentation)' }
+    { parameter: 'Target Build Cost', value: 'Under ₹8,000 (Validated Bill of Materials Target)' }
   ]
 };
 

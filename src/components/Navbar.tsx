@@ -57,16 +57,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOrderClick }) => {
             Hardware
           </NavLink>
           <NavLink to="/specifications" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
-            Specs
-          </NavLink>
-          <NavLink to="/mission" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
-            Mission
+            Specs &amp; Mission
           </NavLink>
           <NavLink to="/impact" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
-            Impact
-          </NavLink>
-          <NavLink to="/roadmap" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
-            Roadmap
+            Impact &amp; Roadmap
           </NavLink>
         </nav>
 
@@ -120,16 +114,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOrderClick }) => {
           Hardware Gallery
         </NavLink>
         <NavLink to="/specifications" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} onClick={closeMobileMenu}>
-          Technical Specs
-        </NavLink>
-        <NavLink to="/mission" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} onClick={closeMobileMenu}>
-          Mission Profile
+          Specs &amp; Mission Profile
         </NavLink>
         <NavLink to="/impact" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} onClick={closeMobileMenu}>
-          Real-World Impact
-        </NavLink>
-        <NavLink to="/roadmap" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} onClick={closeMobileMenu}>
-          Risks & Roadmap
+          Impact &amp; Strategic Roadmap
         </NavLink>
         <div style={{ marginTop: '0.75rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
           <button

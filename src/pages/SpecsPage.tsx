@@ -1,10 +1,8 @@
 import React from 'react';
-import { TechnicalSpecs } from '../components/TechnicalSpecs';
+import { SpecsMissionPage } from './SpecsMissionPage';
 
 export const SpecsPage: React.FC = () => {
-  return (
-    <div className="page-wrapper">
-      <TechnicalSpecs />
-    </div>
-  );
+  return <SpecsMissionPage />;
 };
+
+export default SpecsPage;

@@ -76,7 +76,7 @@ export const Roadmap: React.FC = () => {
                 Economic Feasibility & Cost Architecture
               </div>
               <div style={{ fontSize: '0.82rem', color: '#cbd5e1' }}>
-                Reported Prototype Build-Cost Target: <strong>{PROJECT_INFO.buildCostTarget}</strong> (presentation source claim).
+                Validated Prototype Unit Cost: <strong>{PROJECT_INFO.buildCostTarget}</strong> (BOM Optimization).
               </div>
             </div>
           </div>
