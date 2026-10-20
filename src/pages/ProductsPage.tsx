@@ -47,11 +47,11 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
         </div>
 
         {/* Variant Comparison Matrix */}
-        <div className="specs-table-box" style={{ padding: '2rem' }}>
-          <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', fontWeight: 700 }}>
+        <div className="specs-table-box" style={{ maxWidth: '980px', margin: '0 auto', padding: '1.25rem' }}>
+          <h3 style={{ fontSize: '1.1rem', marginBottom: '0.35rem', fontWeight: 700 }}>
             Quick Architectural Comparison
           </h3>
-          <p style={{ fontSize: '0.84rem', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
+          <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '1rem' }}>
             Both platforms share the same high-speed 600 MHz Teensy 4.1 processor, dual temperature cross-validation, and LoRa transceiver.
           </p>
 

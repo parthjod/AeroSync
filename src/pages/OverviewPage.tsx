@@ -56,16 +56,16 @@ export const OverviewPage: React.FC<OverviewPageProps> = ({ onOpenLightbox }) =>
             <Link
               to="/products"
               className="gallery-card"
-              style={{ padding: '1.5rem', textDecoration: 'none', gap: '0.75rem' }}
+              style={{ padding: '1.15rem 1.25rem', textDecoration: 'none', gap: '0.5rem' }}
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <div className="brand-icon-box" style={{ width: '2.5rem', height: '2.5rem' }}>
-                  <Rocket size={20} />
+                <div className="brand-icon-box" style={{ width: '2.25rem', height: '2.25rem' }}>
+                  <Rocket size={18} />
                 </div>
-                <ArrowRight size={18} color="var(--blue-bright)" />
+                <ArrowRight size={16} color="var(--blue-bright)" />
               </div>
-              <h3 style={{ fontSize: '1.1rem', color: '#ffffff' }}>Hardware Variants</h3>
-              <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
+              <h3 style={{ fontSize: '1.05rem', color: '#ffffff' }}>Hardware Variants</h3>
+              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.45 }}>
                 AeroSync GPS (₹9,500) and AeroSync Standard (₹9,000) specifications, features, and sensor pinouts.
               </p>
             </Link>
@@ -74,16 +74,16 @@ export const OverviewPage: React.FC<OverviewPageProps> = ({ onOpenLightbox }) =>
             <Link
               to="/workflow"
               className="gallery-card"
-              style={{ padding: '1.5rem', textDecoration: 'none', gap: '0.75rem' }}
+              style={{ padding: '1.15rem 1.25rem', textDecoration: 'none', gap: '0.5rem' }}
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <div className="brand-icon-box" style={{ width: '2.5rem', height: '2.5rem' }}>
-                  <Activity size={20} />
+                <div className="brand-icon-box" style={{ width: '2.25rem', height: '2.25rem' }}>
+                  <Activity size={18} />
                 </div>
-                <ArrowRight size={18} color="var(--blue-bright)" />
+                <ArrowRight size={16} color="var(--blue-bright)" />
               </div>
-              <h3 style={{ fontSize: '1.1rem', color: '#ffffff' }}>Flight Workflow</h3>
-              <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
+              <h3 style={{ fontSize: '1.05rem', color: '#ffffff' }}>Flight Workflow</h3>
+              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.45 }}>
                 Four-phase mission execution and interactive 433 MHz LoRa telemetry transmission pipeline.
               </p>
             </Link>
@@ -92,16 +92,16 @@ export const OverviewPage: React.FC<OverviewPageProps> = ({ onOpenLightbox }) =>
             <Link
               to="/hardware"
               className="gallery-card"
-              style={{ padding: '1.5rem', textDecoration: 'none', gap: '0.75rem' }}
+              style={{ padding: '1.15rem 1.25rem', textDecoration: 'none', gap: '0.5rem' }}
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <div className="brand-icon-box" style={{ width: '2.5rem', height: '2.5rem' }}>
-                  <ShieldCheck size={20} />
+                <div className="brand-icon-box" style={{ width: '2.25rem', height: '2.25rem' }}>
+                  <ShieldCheck size={18} />
                 </div>
-                <ArrowRight size={18} color="var(--blue-bright)" />
+                <ArrowRight size={16} color="var(--blue-bright)" />
               </div>
-              <h3 style={{ fontSize: '1.1rem', color: '#ffffff' }}>Hardware & CAD</h3>
-              <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
+              <h3 style={{ fontSize: '1.05rem', color: '#ffffff' }}>Hardware & CAD</h3>
+              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.45 }}>
                 High-resolution CAD callouts and authentic photographs of the CanSat payload and carrier drone.
               </p>
             </Link>
@@ -110,16 +110,16 @@ export const OverviewPage: React.FC<OverviewPageProps> = ({ onOpenLightbox }) =>
             <Link
               to="/specifications"
               className="gallery-card"
-              style={{ padding: '1.5rem', textDecoration: 'none', gap: '0.75rem' }}
+              style={{ padding: '1.15rem 1.25rem', textDecoration: 'none', gap: '0.5rem' }}
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <div className="brand-icon-box" style={{ width: '2.5rem', height: '2.5rem' }}>
-                  <Cpu size={20} />
+                <div className="brand-icon-box" style={{ width: '2.25rem', height: '2.25rem' }}>
+                  <Cpu size={18} />
                 </div>
-                <ArrowRight size={18} color="var(--blue-bright)" />
+                <ArrowRight size={16} color="var(--blue-bright)" />
               </div>
-              <h3 style={{ fontSize: '1.1rem', color: '#ffffff' }}>Specs &amp; Mission Profile</h3>
-              <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
+              <h3 style={{ fontSize: '1.05rem', color: '#ffffff' }}>Specs &amp; Mission Profile</h3>
+              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.45 }}>
                 Avionics pinouts (Teensy 4.1, BME280, SHT31, VEML6030, LoRa), 4-phase flight sequence, and live simulated telemetry curves.
               </p>
             </Link>
@@ -128,16 +128,16 @@ export const OverviewPage: React.FC<OverviewPageProps> = ({ onOpenLightbox }) =>
             <Link
               to="/impact"
               className="gallery-card"
-              style={{ padding: '1.5rem', textDecoration: 'none', gap: '0.75rem' }}
+              style={{ padding: '1.15rem 1.25rem', textDecoration: 'none', gap: '0.5rem' }}
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <div className="brand-icon-box" style={{ width: '2.5rem', height: '2.5rem' }}>
-                  <Layers size={20} />
+                <div className="brand-icon-box" style={{ width: '2.25rem', height: '2.25rem' }}>
+                  <Layers size={18} />
                 </div>
-                <ArrowRight size={18} color="var(--blue-bright)" />
+                <ArrowRight size={16} color="var(--blue-bright)" />
               </div>
-              <h3 style={{ fontSize: '1.1rem', color: '#ffffff' }}>Impact &amp; Strategic Roadmap</h3>
-              <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
+              <h3 style={{ fontSize: '1.05rem', color: '#ffffff' }}>Impact &amp; Strategic Roadmap</h3>
+              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.45 }}>
                 Real-world deployment use cases (agri-tech, microclimate, defense), engineering risk matrix, and development milestones.
               </p>
             </Link>
@@ -147,21 +147,21 @@ export const OverviewPage: React.FC<OverviewPageProps> = ({ onOpenLightbox }) =>
               to="/order"
               className="gallery-card"
               style={{
-                padding: '1.5rem',
+                padding: '1.15rem 1.25rem',
                 textDecoration: 'none',
-                gap: '0.75rem',
+                gap: '0.5rem',
                 borderColor: 'rgba(59, 130, 246, 0.4)',
                 background: 'rgba(59, 130, 246, 0.08)',
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <div className="brand-icon-box" style={{ width: '2.5rem', height: '2.5rem', background: 'var(--blue)' }}>
-                  <ShoppingCart size={20} color="#ffffff" />
+                <div className="brand-icon-box" style={{ width: '2.25rem', height: '2.25rem', background: 'var(--blue)' }}>
+                  <ShoppingCart size={18} color="#ffffff" />
                 </div>
-                <ArrowRight size={18} color="var(--blue-bright)" />
+                <ArrowRight size={16} color="var(--blue-bright)" />
               </div>
-              <h3 style={{ fontSize: '1.1rem', color: '#ffffff' }}>Order & Reserve</h3>
-              <p style={{ fontSize: '0.82rem', color: '#cbd5e1', lineHeight: 1.5 }}>
+              <h3 style={{ fontSize: '1.05rem', color: '#ffffff' }}>Order & Reserve</h3>
+              <p style={{ fontSize: '0.8rem', color: '#cbd5e1', lineHeight: 1.45 }}>
                 Reserve your CanSat platform with live database verification and ground dispatch coordination.
               </p>
             </Link>

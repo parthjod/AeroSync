@@ -94,12 +94,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         >
           {isSelected ? (
             <>
-              <Check size={18} />
+              <Check size={15} />
               <span>Selected for Order · Proceed Below</span>
             </>
           ) : (
             <>
-              <ShoppingCart size={18} />
+              <ShoppingCart size={15} />
               <span>Select {product.name} (₹{product.price.toLocaleString('en-IN')})</span>
             </>
           )}

@@ -61,7 +61,7 @@ export const ProductTabs: React.FC<ProductTabsProps> = ({
           <ul className="features-list">
             {features.map((feature, idx) => (
               <li key={idx} className="feature-item">
-                <CheckCircle2 size={16} className="feature-check-icon" />
+                <CheckCircle2 size={14} className="feature-check-icon" />
                 <span>{feature}</span>
               </li>
             ))}
@@ -85,7 +85,7 @@ export const ProductTabs: React.FC<ProductTabsProps> = ({
           <ul className="outputs-list">
             {outputs.map((output, idx) => (
               <li key={idx} className="output-item">
-                <ChevronRight size={15} color="var(--blue-bright)" style={{ flexShrink: 0, marginTop: '0.15rem' }} />
+                <ChevronRight size={13} color="var(--blue-bright)" style={{ flexShrink: 0, marginTop: '0.12rem' }} />
                 <span>{output}</span>
               </li>
             ))}

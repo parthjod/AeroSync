@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
               <li><Link to="/specifications" className="footer-link">Technical Specs &amp; Mission</Link></li>
               <li><Link to="/impact" className="footer-link">Impact &amp; Strategic Roadmap</Link></li>
               <li style={{ gridColumn: 'span 2' }}>
-                <Link to="/order" className="footer-link" style={{ color: 'var(--blue-bright)', fontWeight: 600 }}>
+                <Link to="/order" className="footer-link">
                   Hardware Allocation &amp; Ordering →
                 </Link>
               </li>
@@ -55,7 +55,7 @@ export const Footer: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="footer-link"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: '#60a5fa' }}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
                 >
                   <Video size={14} />
                   <span>Project Video Demonstrations</span>
