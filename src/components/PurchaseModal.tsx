@@ -32,6 +32,15 @@ export const PurchaseModal: React.FC<PurchaseModalProps> = ({
   const firstInputRef = useRef<HTMLInputElement>(null);
   const supabaseConfigured = isSupabaseConfigured();
 
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Only accept numeric digits and cap at exactly 10 digits
+    const digitsOnly = e.target.value.replace(/\D/g, '').slice(0, 10);
+    setPhone(digitsOnly);
+    if (errors.phone) {
+      setErrors((prev) => ({ ...prev, phone: undefined }));
+    }
+  };
+
   useEffect(() => {
     if (!isOpen) return;
 
@@ -200,13 +209,15 @@ export const PurchaseModal: React.FC<PurchaseModalProps> = ({
               <input
                 id="modal-phone"
                 type="tel"
+                inputMode="numeric"
+                pattern="[0-9]*"
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                onChange={handlePhoneChange}
                 placeholder="9876543210"
                 className={`form-input ${errors.phone ? 'has-error' : ''}`}
                 style={{ paddingLeft: '3.25rem' }}
                 disabled={isSubmitting}
-                maxLength={14}
+                maxLength={10}
                 required
               />
             </div>

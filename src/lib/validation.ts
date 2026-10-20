@@ -4,19 +4,8 @@ export interface ValidationErrors {
 }
 
 export function normalizePhoneNumber(rawPhone: string): string {
-  // Remove spaces, hyphens, parentheses
-  let cleaned = rawPhone.replace(/[\s\-()]/g, '');
-  
-  // Remove leading +91 or 91 if it's 12 digits
-  if (cleaned.startsWith('+91')) {
-    cleaned = cleaned.substring(3);
-  } else if (cleaned.startsWith('91') && cleaned.length === 12) {
-    cleaned = cleaned.substring(2);
-  } else if (cleaned.startsWith('0') && cleaned.length === 11) {
-    cleaned = cleaned.substring(1);
-  }
-  
-  return cleaned;
+  // Strip all non-digit characters and restrict to maximum 10 digits
+  return rawPhone.replace(/\D/g, '').slice(0, 10);
 }
 
 export function validateOrderForm(name: string, rawPhone: string): {
@@ -26,7 +15,7 @@ export function validateOrderForm(name: string, rawPhone: string): {
 } {
   const errors: ValidationErrors = {};
   const trimmedName = name.trim();
-  const normalizedPhone = normalizePhoneNumber(rawPhone.trim());
+  const normalizedPhone = normalizePhoneNumber(rawPhone);
 
   if (!trimmedName) {
     errors.name = 'Full name is required.';
@@ -36,12 +25,14 @@ export function validateOrderForm(name: string, rawPhone: string): {
     errors.name = 'Name must be 80 characters or fewer.';
   }
 
-  // Indian mobile validation: starts with 6, 7, 8, or 9 followed by 9 digits
+  // Indian mobile validation: exactly 10 digits starting with 6, 7, 8, or 9
   const indianMobileRegex = /^[6-9]\d{9}$/;
   if (!rawPhone.trim()) {
     errors.phone = 'Mobile number is required.';
+  } else if (normalizedPhone.length !== 10) {
+    errors.phone = 'Mobile number must be exactly 10 digits.';
   } else if (!indianMobileRegex.test(normalizedPhone)) {
-    errors.phone = 'Please enter a valid 10-digit Indian mobile number (e.g. 9876543210).';
+    errors.phone = 'Must be a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9.';
   }
 
   return {
